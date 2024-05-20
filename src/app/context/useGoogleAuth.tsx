@@ -1,7 +1,7 @@
 'use client';
 import { useContext, createContext, useState, useEffect, ReactNode } from "react";
 import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, User} from "firebase/auth";
-import {auth} from "@/context/firebase";
+import {auth} from "@/app/context/firebase";
 
 interface AuthContextProps {
     children: ReactNode;
