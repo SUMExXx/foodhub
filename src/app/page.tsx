@@ -1,113 +1,117 @@
+import { categories, contents, sampleFoodItems, webData } from "@/data/website";
 import Image from "next/image";
 
+import { CategoryButton, ExploreMenu, LearnMore, OrderNow } from "./components/buttons";
+import FoodItemCard from "./components/FoodItemCard";
+
 export default function Home() {
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex min-h-screen flex-col items-center justify-between md:pb-24">
+      <section className="md:px-24 flex md:gap-16">
+        <div className="flex flex-col items-start md:pt-8">
+          <div className="md:px-4 md:py-2 font-medium md:text-3xl flex justify-center items-center text-customRed bg-gradient-to-r from-[#FFC8C82D] to-[#E3CDCDFF] rounded-full">
+            {
+              contents.text1
+            }
+          </div>
+          <h1 className='font-extrabold md:text-8xl text-black md:mt-4'>
+            {
+              `${contents.text2} `
+            }
+            <span className="text-customRed">{`${contents.text3} `}</span>
+            {
+              `${contents.text4}`
+            }
+          </h1>
+          <span className="mt-6 text-2xl md:pr-24">{`${contents.text5}`}</span>
+          <div className="flex w-full">
+            <OrderNow/>
+            <LearnMore/>
+          </div>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <div className="flex justify-center items-center md:min-w-[579px] md:pt-4">
+            <Image width={579} height={560} alt='representational image' src={'/images/hero.png'}/>
+        </div>
+      </section>
+      <section className="flex flex-col items-center md:mt-24" id="scrollTarget">
+            <h1 className="font-extrabold text-6xl ">{`${contents.text7}`}</h1>
+            <div className="md:mt-24 flex md:gap-24 justify-center items-center flex-wrap">
+              {
+                categories.map((category, index) => (
+                  <CategoryButton key={index} name={category.name} icon={category.icon} redirect={category.redirect}/>
+                ))
+              }
+            </div>
+      </section>
+      <section className="md:px-24 flex md:gap-16 md:mt-24">
+        <div className="flex justify-center items-center md:min-w-[579px] md:pt-4">
+            <Image width={579} height={560} alt='representational image' src={'/images/hero2.png'}/>
+        </div>
+        <div className="flex flex-col items-start md:pt-8">
+          <h1 className='font-extrabold md:text-8xl text-black md:mt-4'>
+            {
+              `${contents.text10} `
+            }
+          </h1>
+          <span className="md:mt-6 text-2xl md:pr-24">{`${contents.text11}`}</span>
+          <div className="flex w-full">
+            <ExploreMenu/>
+          </div>
+        </div>
+      </section>
+      <section className="md:px-24 flex flex-col md:gap-16 md:mt-24 justify-center items-center">
+        <div className="flex flex-col items-center md:gap-4">
+            <h1 className="font-bold text-3xl text-customRed">
+              {
+                `${contents.text18}`
+              }
+            </h1>
+            <h3 className="font-bold text-4xl text-black">{contents.text20}</h3>
+            <span className='md:w-[580px] text-center'>{contents.text19}</span>
+        </div>
+        <div className="flex flex-wrap justify-center md:gap-24">
+              {
+                sampleFoodItems.map((foodItem, index) => (
+                  <FoodItemCard key={index} name={foodItem.name} price={foodItem.price} image={foodItem.image} qty={foodItem.qty}/>
+                ))
+              }
+        </div>
+      </section>
+      <section className="md:px-24 flex md:gap-16 md:mt-24 relative">
+        <div className="flex justify-center items-center md:min-w-[640px] md:pt-4">
+            <Image className="z-10 absolute md:top-[120px] md:left-[180px]" width={320} height={560} alt='representational image' src={'/images/foodreviews.png'}/>
+            <div className="absolute md:top-[080px] md:left-[240px] w-[300px] h-[340px] bg-customLightRed"/>
+            <Image className="z-20 absolute md:top-[446px] md:left-[235px]" width={60} height={60} alt='reviewer' src={'/images/profile2.png'}/>
+            <Image className="z-20 absolute md:top-[446px] md:left-[285px]" width={60} height={60} alt='reviewer' src={'/images/profile3.png'}/>
+            <Image className="z-20 absolute md:top-[446px] md:left-[335px]" width={60} height={60} alt='reviewer' src={'/images/profile4.png'}/>
+            <Image className="z-20 absolute md:top-[446px] md:left-[385px]" width={60} height={60} alt='reviewer' src={'/images/profile5.png'}/>
+        </div>
+        <div className="flex flex-col items-start md:pt-8">
+          <h1 className='font-extrabold md:text-5xl text-black md:mt-4'>
+            {
+              `${contents.text14} `
+            }
+          </h1>
+          <Image className="absolute md:top-[144px] md:left-[780px]" width={64} height={81} alt='quotes' src={'/icons/quotes_start.png'}/>
+          <span className="md:mt-20 text-3xl md:pr-24 z-10">{`${contents.text15}`}</span>
+          <Image className="absolute md:top-[254px] md:left-[1120px]" width={64} height={81} alt='quotes' src={'/icons/quotes_end.png'}/>
+          <div className="flex w-full md:mt-10 gap-2">
+            <Image className="" width={45} height={45} alt='stars' src={'/icons/material-symbols_star.png'}/>
+            <Image className="" width={45} height={45} alt='stars' src={'/icons/material-symbols_star.png'}/>
+            <Image className="" width={45} height={45} alt='stars' src={'/icons/material-symbols_star.png'}/>
+            <Image className="" width={45} height={45} alt='stars' src={'/icons/material-symbols_star.png'}/>
+            <Image className="" width={45} height={45} alt='stars' src={'/icons/material-symbols_star.png'}/>
+          </div>
+          <div className="flex justify-center items-center md:mt-6 md:gap-4">
+            <Image className="" width={80} height={80} alt='quotes' src={'/images/profile1.png'}/>
+            <div className="flex flex-col justify-center">
+              <h5 className="font-bold text-2xl">{contents.text16}</h5>
+              <h6 className="text-customRed font-medium">{contents.text17}</h6>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
