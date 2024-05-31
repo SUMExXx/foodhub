@@ -182,6 +182,8 @@ const ProfilePage = () => {
                                 src={userDetails.imgUrl}
                                 alt="Profile"
                                 className="w-24 h-24 rounded-full mb-4"
+                                width={24}
+                                height={24}
                             />
                             ) : (
                             <div className="w-24 h-24 rounded-full bg-gray-300 mb-4 flex items-center justify-center text-gray-700">

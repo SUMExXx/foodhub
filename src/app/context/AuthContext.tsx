@@ -21,7 +21,7 @@ export const AuthContextProvider = ({children}: AuthContextProps) => {
 
      const [user, setUser] = useState<User | null>(null)
 
-     const {authentication, setAuthentication} = useStateContext()
+     const {authentication, setAuthentication, cartRefresh, setCartRefresh} = useStateContext()
 
       const googleSignIn = async () =>{
             const provider = new GoogleAuthProvider()
@@ -47,6 +47,8 @@ export const AuthContextProvider = ({children}: AuthContextProps) => {
 
       const logOut = () =>{
           signOut(auth)
+          setAuthentication(auth)
+          setCartRefresh((prev) => !prev)
       }
 
       useEffect(() =>{
