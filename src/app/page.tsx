@@ -1,10 +1,11 @@
-import { categories, contents, sampleFoodItems, webData } from "@/data/website";
+import { categories, contents, webData } from "@/data/website";
 import Image from "next/image";
 
 import { CategoryButton, ExploreMenu, LearnMore, OrderNow } from "./components/buttons";
-import FoodItemCard from "./components/FoodItemCard";
 
-export default function Home() {
+import MenuItem from "./components/MenuItem";
+
+export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between md:pb-24">
@@ -36,7 +37,7 @@ export default function Home() {
       </section>
       <section className="flex flex-col items-center md:mt-24" id="scrollTarget">
             <h1 className="font-extrabold text-6xl ">{`${contents.text7}`}</h1>
-            <div className="md:mt-24 flex md:gap-24 justify-center items-center flex-wrap">
+            <div className="md:mt-24 flex md:gap-16 md:px-12 justify-center items-center flex-wrap">
               {
                 categories.map((category, index) => (
                   <CategoryButton key={index} name={category.name} icon={category.icon} redirect={category.redirect}/>
@@ -70,13 +71,13 @@ export default function Home() {
             <h3 className="font-bold text-4xl text-black">{contents.text20}</h3>
             <span className='md:w-[580px] text-center'>{contents.text19}</span>
         </div>
-        <div className="flex flex-wrap justify-center md:gap-24">
+        {/* <div className="flex flex-wrap justify-center md:gap-24">
               {
                 sampleFoodItems.map((foodItem, index) => (
-                  <FoodItemCard key={index} name={foodItem.name} price={foodItem.price} image={foodItem.image} qty={foodItem.qty}/>
+                  <MenuItem key={index} name={foodItem.name} price={foodItem.price} image={foodItem.image} qty={foodItem.qty}/>
                 ))
               }
-        </div>
+        </div> */}
       </section>
       <section className="md:px-24 flex md:gap-16 md:mt-24 relative">
         <div className="flex justify-center items-center md:min-w-[640px] md:pt-4">

@@ -152,23 +152,48 @@ export const categories: Category[]= [
     {
         name: 'Italian',
         icon: '/icons/italian.png',
-        redirect: '/',
+        redirect: '/menu?type=italian',
     },
     {
         name: 'Indian',
         icon: '/icons/indian.png',
-        redirect: '/',
+        redirect: '/menu?type=indian',
     },
     {
         name: 'Chinese',
         icon: '/icons/chinese.png',
-        redirect: '/',
+        redirect: '/menu?type=chinese',
     },
     {
         name: 'Japanese',
         icon: '/icons/japanese.png',
-        redirect: '/',
+        redirect: '/menu?type=japanese',
     },
+    {
+        name: 'Mexican',
+        icon: '/icons/japanese.png',
+        redirect: '/menu?type=mexican',
+    },
+    {
+        name: 'Breakfast',
+        icon: '/icons/japanese.png',
+        redirect: '/menu?type=breakfast',
+    },
+    {
+        name: 'Starters',
+        icon: '/icons/japanese.png',
+        redirect: '/menu?type=starters',
+    },
+    {
+        name: 'Desserts',
+        icon: '/icons/japanese.png',
+        redirect: '/menu?type=desserts',
+    },
+    {
+        name: 'Drinks',
+        icon: '/icons/japanese.png',
+        redirect: '/menu?type=drinks',
+    }
 ]
 
 interface Socials{
@@ -182,37 +207,3 @@ export const socials: Socials = {
     facebook: '',
     twitter: ''
 }
-
-interface SampleFoodItem{
-    name: string,
-    price: number,
-    image: string,
-    qty: number
-}
-
-export const sampleFoodItems: SampleFoodItem[]= [
-    {
-        name: 'Italian',
-        price: 20,
-        image: '/images/foodreviews.png',
-        qty: 2
-    },
-    {
-        name: 'Italian',
-        price: 20,
-        image: '/images/foodreviews.png',
-        qty: 2
-    },
-    {
-        name: 'Italian',
-        price: 20,
-        image: '/images/foodreviews.png',
-        qty: 2
-    },
-    {
-        name: 'Italian',
-        price: 20,
-        image: '/images/foodreviews.png',
-        qty: 2
-    },
-]

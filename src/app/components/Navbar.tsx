@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,7 +8,6 @@ import LoginAndCart from './LoginAndCart';
 // import Menu from './Menu';
 
 const Navbar = () => {
-
   return (
     <nav className='z-50 top-0 left-0 right-0 z-20 flex fixed justify-between bg-white text-black w-full md:px-[100px] px-2 h-[60px] md:h-[84px]' id='navbar_container'>
         

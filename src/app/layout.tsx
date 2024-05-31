@@ -6,6 +6,7 @@ import { webData } from "@/data/website";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
+import { StateProvider } from "./context/stateContext";
 
 const karla = Karla({ subsets: ["latin"] });
 
@@ -22,14 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${karla.className} antialiased`}>
-        <AuthContextProvider>
-          <Navbar/>
-          <div className='mt-[48px] md:mt-[84px] text-black'>
-            {children}
-          </div>
-          <Footer/>
+        <StateProvider>
+          <AuthContextProvider>
+            <Navbar/>
+            <div className='mt-[48px] md:mt-[84px] text-black'>
+              {children}
+            </div>
+            <Footer/>
+            {/* <Spinner/> */}
           </AuthContextProvider>
-        {/* <Spinner/> */}
+        </StateProvider>
       </body>
     </html>
   );

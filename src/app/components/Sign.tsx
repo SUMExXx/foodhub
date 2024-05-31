@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { useGoogleAuth } from '@/app/context/useGoogleAuth';
 import { AuthContext } from '@/app/context/AuthContext'
@@ -12,10 +12,13 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 import { signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider, User, getAuth} from "firebase/auth";
 import { contents } from '@/data/website';
+import { useStateContext } from '../context/stateContext';
 
 const Sign = () =>{
 
     // const { user, googleSignIn, logOut} = useGoogleAuth();
+
+    const { authentication, setAuthentication } = useStateContext()
 
     const { user, googleSignIn, logOut} = useContext(AuthContext);
 
@@ -26,6 +29,10 @@ const Sign = () =>{
             console.log(error)
         }
     }
+
+    useEffect(()=>{
+        setAuthentication(auth)
+    }, [user, setAuthentication])
 
     if(user == null){
         return(
