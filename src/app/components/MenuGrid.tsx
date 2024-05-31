@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -165,139 +165,141 @@ const MenuGrid = () => {
 
   return (
         menuItemsLoaded? (
-            <div className='flex flex-col w-full md:gap-8 md:mt-8'>
-                {
-                    typeQuery != null? (
-                        <div className='w-full flex justify-center items-center md:py-4 md:px-12'>
-                            <button className='w-full md:px-12 md:py-4 text-center bg-customRed hover:bg-[#ED1E45] text-white font-bold text-lg rounded-lg' onClick={reloadFullMenu}>View Full Menu</button>
-                        </div>
-                    ) : <></>
-                }
-                {
-                    typeQuery != null && typeQuery != 'starters' && typeQuery != 'chinese' && typeQuery != 'indian' && typeQuery != 'japanese' && typeQuery != 'italian' && typeQuery != 'mexican' && typeQuery != 'breakfast' && typeQuery != 'desserts' && typeQuery != 'drinks'? (
-                        <div className='w-full h-full md:p-16 flex justify-center items-center text-4xl'>
-                            Sorry Category Not Found
-                        </div>
-                    ) : <></>
-                }
-                {
-                    typeQuery == null || typeQuery == 'starters'? (
-                        starterData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Starters</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    starterData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
+            <Suspense fallback={<div className='flex justify-center items-center w-full h-full text-2xl'>Loading...</div>}>
+                <div className='flex flex-col w-full md:gap-8 md:mt-8'>
+                    {
+                        typeQuery != null? (
+                            <div className='w-full flex justify-center items-center md:py-4 md:px-12'>
+                                <button className='w-full md:px-12 md:py-4 text-center bg-customRed hover:bg-[#ED1E45] text-white font-bold text-lg rounded-lg' onClick={reloadFullMenu}>View Full Menu</button>
                             </div>
-                        </section>
-                    ) : <></>
-                }
-                {   
-                    typeQuery == null || typeQuery == 'chinese'? (
-                        chineseData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Chinese</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    chineseData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
+                        ) : <></>
+                    }
+                    {
+                        typeQuery != null && typeQuery != 'starters' && typeQuery != 'chinese' && typeQuery != 'indian' && typeQuery != 'japanese' && typeQuery != 'italian' && typeQuery != 'mexican' && typeQuery != 'breakfast' && typeQuery != 'desserts' && typeQuery != 'drinks'? (
+                            <div className='w-full h-full md:p-16 flex justify-center items-center text-4xl'>
+                                Sorry Category Not Found
                             </div>
-                        </section>
-                    ) : <></>
-                }
-                {   
-                    typeQuery == null || typeQuery == 'indian'? (
-                        indianData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Indian</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    indianData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
-                            </div>
-                        </section>
-                    ) : <></>
-                }
-                {
-                    typeQuery == null || typeQuery == 'japanese'? (
-                        japaneseData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Japanese</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    japaneseData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
-                            </div>
-                        </section>
-                    ) : <></>
-                }
-                {
-                    typeQuery == null || typeQuery == 'italian'? (
-                        italianData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Italian</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    italianData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
-                            </div>
-                        </section>
-                    ) : <></>
-                }
-                {
-                    typeQuery == null || typeQuery == 'mexican'? (
-                        mexicanData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Mexican</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    mexicanData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
-                            </div>
-                        </section>
-                    ) : <></>
-                }
-                {
-                    typeQuery == null || typeQuery == 'breakfast'? (
-                        breakfastData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Breakfast</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    breakfastData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
-                            </div>
-                        </section>
-                    ) : <></>
-                }
-                {
-                    typeQuery == null || typeQuery == 'desserts'? (
-                        dessertData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Desserts</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    dessertData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
-                            </div>
-                        </section>
-                    ) : <></>
-                }
-                {
-                    typeQuery == null || typeQuery == 'drinks'? (
-                        drinkData.length == 0? <></> : 
-                        <section className='flex flex-col justify-center items-center'>
-                            <h1 className='text-4xl font-semibold'>Drinks</h1>
-                            <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
-                                {
-                                    drinkData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
-                                }
-                            </div>
-                        </section>
-                    ) : <></>
-                }
-            </div>
+                        ) : <></>
+                    }
+                    {
+                        typeQuery == null || typeQuery == 'starters'? (
+                            starterData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Starters</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        starterData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {   
+                        typeQuery == null || typeQuery == 'chinese'? (
+                            chineseData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Chinese</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        chineseData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {   
+                        typeQuery == null || typeQuery == 'indian'? (
+                            indianData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Indian</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        indianData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {
+                        typeQuery == null || typeQuery == 'japanese'? (
+                            japaneseData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Japanese</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        japaneseData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {
+                        typeQuery == null || typeQuery == 'italian'? (
+                            italianData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Italian</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        italianData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {
+                        typeQuery == null || typeQuery == 'mexican'? (
+                            mexicanData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Mexican</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        mexicanData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {
+                        typeQuery == null || typeQuery == 'breakfast'? (
+                            breakfastData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Breakfast</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        breakfastData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {
+                        typeQuery == null || typeQuery == 'desserts'? (
+                            dessertData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Desserts</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        dessertData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                    {
+                        typeQuery == null || typeQuery == 'drinks'? (
+                            drinkData.length == 0? <></> : 
+                            <section className='flex flex-col justify-center items-center'>
+                                <h1 className='text-4xl font-semibold'>Drinks</h1>
+                                <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
+                                    {
+                                        drinkData.map((foodItem) => (<MenuItem key={foodItem.pid} pid={foodItem.pid} name={foodItem.name} desc={foodItem.desc} price={foodItem.price} type={foodItem.type} imgUrl={foodItem.imageUrl}/>))
+                                    }
+                                </div>
+                            </section>
+                        ) : <></>
+                    }
+                </div>
+            </Suspense>
         ): (
             <div className="flex w-full flex-wrap items-start justify-center md:p-8 md:gap-4">
                 {

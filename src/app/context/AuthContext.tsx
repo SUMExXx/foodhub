@@ -31,6 +31,7 @@ export const AuthContextProvider = ({children}: AuthContextProps) => {
                 const displayName = auth.currentUser?.displayName?.toString().substring(0, auth.currentUser?.displayName?.toString().indexOf(' '))
                 const email = auth.currentUser?.email
                 const firebaseID = auth.currentUser?.uid
+                const photoUrl = auth.currentUser?.photoURL
                 
                 const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}${userRoutes.googleLogin}`
 
@@ -39,7 +40,7 @@ export const AuthContextProvider = ({children}: AuthContextProps) => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ uuid: firebaseID, name: displayName, email: email }),
+                    body: JSON.stringify({ uuid: firebaseID, name: displayName, email: email, photoUrl: photoUrl }),
                 }).then((res) => console.log(res));
             })
         }
