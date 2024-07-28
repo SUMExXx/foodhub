@@ -3,11 +3,15 @@ import React, { useState, useEffect } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
+import Script from 'next/script';
 import { useStateContext } from '../context/stateContext';
 import { auth } from '../context/firebase';
 import { userRoutes } from '@/data/apiRoutes';
 import CartItem from '../components/CartItem';
 import { useRouter } from 'next/navigation';
+
+import { makePayment } from '@/payment/razorpay';
 
 interface CartProps{
     pid: string,
@@ -42,23 +46,27 @@ const Cart = () =>{
     }
 
     const placeOrder = async () => {
-        await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${userRoutes.placeOrder}`, {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ uuid: id }),
-        })
-        .then((res) => {
-            if(res.ok){
-                alert('Yeah! Order placed')
-                setCartRefresh((prev) => !prev)
-                router.push('/')
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching cart data:', error);
-        });
+        // await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${userRoutes.placeOrder}`, {
+        //     method: 'POST',
+        //     headers: {
+        //     'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ uuid: id }),
+        // })
+        // .then((res) => {
+        //     if(res.ok){
+        //         alert('Yeah! Order placed')
+        //         setCartRefresh((prev) => !prev)
+        //         router.push('/')
+        //     }
+        // })
+        // .catch((error) => {
+        //     console.error('Error fetching cart data:', error);
+        // });
+        
+        if(id){
+            makePayment(id);
+        }
     }
     
     useEffect(() => {

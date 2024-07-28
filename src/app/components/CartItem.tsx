@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { userRoutes } from '@/data/apiRoutes';
-import { useStateContext } from '../context/stateContext';
+import { useStateContext } from '@/app/context/stateContext';
 
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 

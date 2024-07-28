@@ -7,5 +7,6 @@ export const userRoutes = {
     deleteFromCart: '/users/deleteFromCart',
     deleteItemFromCart: '/users/deleteItemFromCart',
     getUserDetails: '/users/userDetails',
-    placeOrder: '/users/placeOrder'
+    placeOrder: '/users/placeOrder',
+    createOrder: '/orders/createOrder'
 }
