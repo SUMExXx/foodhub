@@ -35,5 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-FoodHub Backend: https://github.com/SUMExXx/foodhub-backend
+FoodHub Backend: https://github.com/SUMExXx/foodhub-api
+
 FoodHub Admin: https://github.com/SUMExXx/foodhub-admin
